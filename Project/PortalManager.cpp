@@ -1,6 +1,10 @@
 #include "PortalManager.h"
 #include <time.h>
 
+PortalManager::PortalManager(int x, int y)
+{
+	NewPortal(x, y);
+}
 
 void PortalManager::NewPortal(int x, int y)
 {
@@ -20,18 +24,18 @@ Point PortalManager::Teleport(int x, int y)
 	{
 		if (it->x == x && it->y == y)
 		{
-			index = std::distance(allPortals.begin(), it);
+			index = (int)std::distance(allPortals.begin(), it);
 		}
 	}
 
 	// logic to get a random new portal from the list of portals
 	srand((unsigned)time(0));
-	int x = rand() % allPortals.size();
-	while (x == index && allPortals.size() > 1)
+	int rng = rand() % allPortals.size();
+	while (rng == index && allPortals.size() > 1)
 	{
-		x = rand() % allPortals.size();
+		rng = rand() % allPortals.size();
 	}
 
-	return allPortals[x];
+	return allPortals[rng];
 
 }

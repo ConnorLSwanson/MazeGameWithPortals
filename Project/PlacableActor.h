@@ -26,6 +26,7 @@ enum class ActorType
 class PlacableActor
 {
 public:
+	PlacableActor();
 	PlacableActor(int x, int y, ActorColor color = ActorColor::Regular);
 	virtual ~PlacableActor();
 
