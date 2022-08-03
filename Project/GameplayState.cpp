@@ -253,7 +253,8 @@ void GameplayState::Draw()
 	HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
 	system("cls");
 
-	m_pLevel->Draw();
+	m_pLevel->DrawLevel();
+	m_pLevel->DrawActors();
 
 	// Set cursor position for player 
 	COORD actorCursorPosition;

@@ -25,9 +25,10 @@ void Enemy::InitDirection()
 	}
 }
 
+// TODO: store (char)153 in a variable *done*
 void Enemy::Draw()
 {
-	std::cout << (char)153;
+	std::cout << enemy;
 }
 
 void Enemy::Update()

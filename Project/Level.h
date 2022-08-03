@@ -17,7 +17,8 @@ public:
 	~Level();
 
 	bool Load(std::string levelName, int* playerX, int* playerY);
-	void Draw();
+	void DrawLevel();
+	void DrawActors();
 	PlacableActor* UpdateActors(int x, int y);
 
 	bool IsSpace(int x, int y);

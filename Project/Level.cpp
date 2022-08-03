@@ -36,6 +36,7 @@ Level::~Level()
 	}
 }
 
+
 bool Level::Load(std::string levelName, int* playerX, int* playerY)
 {
 	levelName.insert(0, "../");
@@ -70,15 +71,16 @@ bool Level::Load(std::string levelName, int* playerX, int* playerY)
 			cout << "There were some warnings in the level data, see above." << endl;
 			system("pause");
 		}
+
+		levelFile.close();
 		return true;
 	}
 }
-void Level::Draw()
-{
-	HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
-	SetConsoleTextAttribute(console, (int)ActorColor::Regular);
 
-	// Draw the Level
+// TODO: Separate into DrawLevel and DrawActors *done*
+
+void Level::DrawLevel()
+{
 	for (int y = 0; y < GetHeight(); ++y)
 	{
 		for (int x = 0; x < GetWidth(); ++x)
@@ -88,10 +90,15 @@ void Level::Draw()
 		}
 		cout << endl;
 	}
+}
+
+void Level::DrawActors()
+{
+	HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleTextAttribute(console, (int)ActorColor::Regular);
 
 	COORD actorCursorPosition;
 
-	// Draw actors
 	for (auto actor = m_pActors.begin(); actor != m_pActors.end(); ++actor)
 	{
 		if ((*actor)->IsActive())

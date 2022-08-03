@@ -22,6 +22,8 @@ private:
 	int m_directionX;
 	int m_directionY;
 
+	char enemy = (char)153;
+
 	void UpdateDirection(int& current, int& direction, int& movement);
 
 };
